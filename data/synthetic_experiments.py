@@ -65,9 +65,3 @@ def morphogen_gradient(X_0: int, num_bins: int, params: np.ndarray, file_name: s
     param_list[2*num_bins-1:3*num_bins-1] = params[2]
 
     write_to_csv(file_name, initial_species, param_list, stoich_matrix)
-
-
-
-
-
-

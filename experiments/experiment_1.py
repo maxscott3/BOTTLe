@@ -96,7 +96,6 @@ def main():
     print("Generated FID metric figure")
 
 
-
-
 if __name__ == "__main__":
     main()
+    

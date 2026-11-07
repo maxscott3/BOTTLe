@@ -27,3 +27,4 @@ class FigureParameters:
     method_colors: List[str]
     method_linestyles: List[str]
     method_linewidths: List[float]
+    

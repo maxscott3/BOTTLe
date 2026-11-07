@@ -2,7 +2,6 @@ from typing import Callable, Tuple
 import numpy as np
 
 
-
 def bottle_step(
         X: np.ndarray, 
         h: float, 
