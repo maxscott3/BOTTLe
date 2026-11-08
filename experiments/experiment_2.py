@@ -7,7 +7,7 @@ from src.models import TauLeapingMethod, SSAMethod
 from src.data import initialise_prop_functions
 
 from data.utils import read_csv
-from experiments.figures import FID_experiment_figure
+from experiments.figures import FID_experiment_figure, FID_experiment_figure_w_degenerate_counts
 
 
 
@@ -43,7 +43,7 @@ experimentParameters2 = ExperimentParameters(
 )
 
 figureParameters = FigureParameters(
-    filename = "experiments/experiment_2_FID_figure.png",
+    filename = "experiments/experiment_2_FID_w_degenerate_count.png",
     n_methods = 3,
     method_labels = ["Tau-leaping", r"$\theta$-trapezoidal", r"B$\theta$TTLe"],
     method_colors = ["#D55E00", "#009E73", "#0072B2"],
@@ -80,7 +80,7 @@ def main():
     fid_metrics[2], degenerate_event_count[2] = bottle_method.FID_experiment(true_sample_mean, true_sample_cov)
     n_function_evaluations[2] = 2 * experimentParameters2.T / experimentParameters2.step_sizes
 
-    FID_experiment_figure(
+    FID_experiment_figure_w_degenerate_counts(
         n_function_evaluations,
         fid_metrics,
         degenerate_event_count,

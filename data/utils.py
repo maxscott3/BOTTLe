@@ -3,7 +3,6 @@ import numpy as np
 import pandas as pd
 
 
-
 def write_to_csv(file_name: str, X_0: np.ndarray, param_list: np.ndarray, stoich_matrix: np.ndarray) \
         -> None:
     """Write initial species population, propensity function parameters and stoichiometry matrix 
