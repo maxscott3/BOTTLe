@@ -10,7 +10,7 @@ def bottle_step(
         theta: float, 
         alpha1: float, 
         alpha2: float
-    ) -> Tuple[np.ndarray, int, int]:
+    ) -> Tuple[np.ndarray, int]:
     """Bottle method step, see Definition 3"""
     prop_funcs_1 = prop_funcs(X)
     poisson_rvs_1 = np.random.poisson(lam= prop_funcs_1 * h * theta)

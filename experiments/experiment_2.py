@@ -63,7 +63,7 @@ def main():
     degenerate_event_count = np.empty(shape=(3, len(experimentParameters1.step_sizes)))
     n_function_evaluations = np.empty(shape=(3, len(experimentParameters1.step_sizes)))
 
-    print("Samping SSA method")
+    print("Sampling SSA method")
     SSA_endpoints = SSA_method.multiple_sample()
     true_sample_mean = np.mean(SSA_endpoints, axis = 0)
     true_sample_cov = np.cov(SSA_endpoints, rowvar = False)

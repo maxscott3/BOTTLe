@@ -53,10 +53,10 @@ class TauLeapingMethod:
         return X, total_degenerate_event_count
 
 
-    def multiple_sample(self, h: float) -> Tuple[np.ndarray, np.ndarray, int]:
+    def multiple_sample(self, h: float) -> Tuple[np.ndarray, int]:
         """Generate multiple samples of experiment for a specific step size, returning
-            the mean and covariance of the final species counts along with  total number 
-            of degenerate events"""
+            the final species counts of each sample along with the total number of
+            degenerate events"""
         total_degenerate_event_count = 0
         final_species_counts = np.empty((self.N_samples, self.N_species), dtype=np.int64)
         for i in range(self.N_samples):
@@ -68,7 +68,7 @@ class TauLeapingMethod:
 
     def FID_experiment(self, true_sample_mean: np.ndarray, true_sample_cov: np.ndarray) \
             -> Tuple[np.ndarray, np.ndarray]:
-        """Measure Fréchet inception distance between method final species count and and assumed 
+        """Measure Fréchet inception distance between method final species count and assumed
             exact methodology, here SSA. Returns metric for each step size in experiment along with
             average per sample number of degenerate events"""
         fid_metrics = np.empty(len(self.step_sizes), np.float64)
@@ -115,6 +115,8 @@ class SSAMethod:
         while (t < self.T) and (count < self.max_count):
             prop_funcs_ = self.prop_funcs_SSA(X, idx, prop_funcs_)
             t += np.log(1 / np.random.random()) / np.sum(prop_funcs_)
+            if t > self.T:
+                break
             probs = prop_funcs_ / np.sum(prop_funcs_)
             idx = np.array([np.random.choice(self.N_reactions, p=probs)])
             X += self.stoich_matrix[idx][0]

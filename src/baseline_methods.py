@@ -9,7 +9,7 @@ def euler_step(
         stoich_matrix: np.ndarray,
         prop_funcs: Callable[[np.ndarray], np.ndarray],
         **kwargs
-        ) -> np.ndarray:
+        ) -> Tuple[np.ndarray, int]:
     """Euler type tau-leaping step, see Definition 1"""
     prop_funcs_ = prop_funcs(X)
     poisson_rvs = np.random.poisson(lam= prop_funcs_ * h)

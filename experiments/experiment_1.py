@@ -79,7 +79,7 @@ def main():
     degenerate_event_count = np.empty(shape=(3,len(experimentParameters1.step_sizes)))
     n_function_evaluations = np.empty(shape=(3,len(experimentParameters1.step_sizes)))
 
-    print("Samping SSA method")
+    print("Sampling SSA method")
     SSA_endpoints = SSA_method.multiple_sample()
     true_sample_mean = np.mean(SSA_endpoints, axis = 0)
     true_sample_cov = np.cov(SSA_endpoints, rowvar = False)
@@ -97,10 +97,8 @@ def main():
     n_function_evaluations[2] = 2 * experimentParameters2.T / experimentParameters2.step_sizes
 
     FID_experiment_figure(
-    #FID_experiment_figure_w_degenerate_counts(
         n_function_evaluations,
         fid_metrics,
-        #degenerate_event_count,
         figureParameters1
     )
 
@@ -112,8 +110,8 @@ def main():
         degenerate_event_count,
         figureParameters2
     )
-    
-    print("Generated FID metric figure")
+
+    print("Generated FID metric figure with degenerate event count")
 
 
 if __name__ == "__main__":
